@@ -31,4 +31,6 @@ const calc=(req,res)=>{
 module.exports={
     index,
     ime,
-}
+    greeting,
+    calc,
+};

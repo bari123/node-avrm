@@ -8,7 +8,7 @@ html , body {
 }
 
 body {
-    background-color: rgb(141, 11, 11);
+    background-color: royalblue;
 }
 
 .main-container{
@@ -21,7 +21,7 @@ body {
 
 .form{
     width: 300px;
-    height: 400px;
+    height: 630px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 20px 50px rgba(0,0,0,.15);
@@ -64,8 +64,12 @@ body {
     border: none;
     border-radius: 3px;
     font-weight: bold;
-    box-shadow: 0 10px 20px rgba(0,0,0 .15);
+    box-shadow: 0 10px 20px rgba(0,0,0,.15);
     cursor: pointer;
     margin-bottom: 20px;
+
+}
+
+h1{
 
 }

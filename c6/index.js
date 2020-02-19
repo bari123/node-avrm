@@ -15,8 +15,8 @@ app.use(express.static('public'))
 
 // routes
 
-app.get('/', auth.viewLogin);
-app.post('/', auth.apiLogin);
+app.get('/login', auth.viewLogin);
+app.post('/login', auth.apiLogin);
 
 app.get('/register', auth.viewRegister);
 app.post('/register', auth.apiRegister);

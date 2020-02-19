@@ -59,9 +59,21 @@ const update = (id,data) => {
     });
 }
 
+const getByEmail = (email) => {
+    return new Promise((succes,fail) => {
+        User.findOne({email:email},(err, data) =>{
+            if(err){
+                return fail(err);
+            }
+            return succes(data);
+        })
+    })
+}
+
 module.exports = {
     readAll,
     createNew,
     remove,
-    update
+    update,
+    getByEmail
 }

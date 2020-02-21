@@ -7,8 +7,8 @@ const viewLogin = (req, res) => {
 
 const apiLogin = (req, res) => {
     if (req.body.email !==undefined && req.body.email.length >0 &&
-        req.body.password !==undefined && req.body.password.length >0 &&
-        )   {   
+        req.body.password !==undefined && req.body.password.length >0 
+     ) { 
        users.getByEmail(req.body.email)
        .then(data => {
            if(bcrypt.compareSync(req.body.password, data.password)){

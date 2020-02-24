@@ -11,12 +11,13 @@ let app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'hbs');
-app.use(express.static('public'))
+app.use(express.static('public'));
+
 
 // routes
 
-app.get('/login', auth.viewLogin);
-app.post('/login', auth.apiLogin);
+app.get('/', auth.viewLogin);
+app.post('/', auth.apiLogin);
 
 app.get('/register', auth.viewRegister);
 app.post('/register', auth.apiRegister);

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Movie = mongoose.model(
     'movies',
-    {
+    {       _id: String,
             title: String,
             release_date: Date,
             director: String,
@@ -15,12 +15,12 @@ const Movie = mongoose.model(
 
 
 const readAll = () =>{
-    return new Promise((succes,fail) =>{
+    return new Promise((success,fail) =>{
         Movie.find({}, (err,data) => {
             if(err){
                 return fail(err);
             }
-            console.log(data);
+            return success(data);
         });
     })
 }

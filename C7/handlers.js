@@ -46,7 +46,7 @@ const delmovie = (req, res) =>{
 const allmovies = (req,res)=>{
     movie.readAll()
     .then(data => {
-        res.status(200).send(data);
+        res.send(data);
     })
     .catch(err => {
         console.log(err);

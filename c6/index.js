@@ -40,11 +40,10 @@ app.use((req,res,next) => {
 });
 
 app.set('view engine', 'hbs');
-<<<<<<< HEAD
-=======
-app.use(express.static('public'));
->>>>>>> e1179dc0284965c5b4a06cf158e3196ec456480a
 
+app.use(express.static('public'));
+
+app.use(express.static('public'));
 
 // routes
 

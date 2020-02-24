@@ -12,11 +12,10 @@ const apiLogin = (req, res) => {
 
     if (req.body.email !==undefined && req.body.email.length >0 &&
         req.body.password !==undefined && req.body.password.length >0 
-<<<<<<< HEAD
+
      ) { 
-=======
-    ) {   
->>>>>>> e1179dc0284965c5b4a06cf158e3196ec456480a
+
+     
        users.getByEmail(req.body.email)
        .then(data => {
            if(bcrypt.compareSync(req.body.password, data.password)){

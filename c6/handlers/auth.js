@@ -1,17 +1,27 @@
 var bcrypt = require('bcryptjs');
 var users = require('../models/user');
+var jwt = require('jsonwebtoken');
+
+const tokenKey = 'pwd123!';
 
 const viewLogin = (req, res) => {
     res.render('login');
 }
 
 const apiLogin = (req, res) => {
+
     if (req.body.email !==undefined && req.body.email.length >0 &&
         req.body.password !==undefined && req.body.password.length >0 
+<<<<<<< HEAD
      ) { 
+=======
+    ) {   
+>>>>>>> e1179dc0284965c5b4a06cf158e3196ec456480a
        users.getByEmail(req.body.email)
        .then(data => {
            if(bcrypt.compareSync(req.body.password, data.password)){
+               let token = jwt.sign({ email :data.email } , tokenKey);
+               res.cookie('jwt', token);
                res.redirect('/dashboard');
            } else {
                res.redirect('/?err=1')
@@ -19,10 +29,9 @@ const apiLogin = (req, res) => {
 
        })
        .catch(err => {
-           res.redirect('/')
-       })
-    } 
-    else {
+           res.redirect('/dashboard');
+       });
+    } else {
        res.redirect('/');
    }
 }
@@ -51,7 +60,7 @@ const apiRegister = (req, res) => {
     users.createNew({
         first_name: req.body.first_name,
         last_name: req.body.first_name,
-        email: req.body.first_email,
+        email: req.body.email,
         password: hash    
     })
     .then(() =>{
@@ -74,5 +83,6 @@ module.exports = {
     viewLogin,
     apiLogin,
     viewRegister,
-    apiRegister
+    apiRegister,
+    tokenKey
 };

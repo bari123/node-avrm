@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+
+    <header>
+    <h2>Dashboard</h2>
+    <a href="/" >Log out</a>
+    </header>
+    
+    <div>
+    <table border="1" width="80%">
+            <tr>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Email</td>
+                
+            </tr>
+             <form action="/user" method="post"></form>
+              {{#each users}}
+             <tr>
+                <td>{{this.first_name}}</td>
+                <td>{{this.last_name}}</td>
+                <td>{{this.email}}</td>
+            </tr>
+             {{/each}}
+        </table>
+    </div>
+</body>
+</html>

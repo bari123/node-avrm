@@ -1,19 +1,22 @@
 const mongoose = require('mongoose');
-const User = mongoose.model(
-    'users',
+const Movie = mongoose.model(
+    'movies',
     {
-        first_name: String,
-        last_name: String,
-        email: String,
+            title: String,
+            release_date: Date,
+            director: String,
+            actors: [String],
+            genre: [String]
+        
     },
-    'users'
+    'movies'
 );
 
 
 
 const readAll = () =>{
     return new Promise((succes,fail) =>{
-        User.find({}, (err,data) => {
+        Movie.find({}, (err,data) => {
             if(err){
                 return fail(err);
             }
@@ -24,7 +27,7 @@ const readAll = () =>{
 
 const createNew = (data) => {
     return new Promise((succes,fail) =>{
-        let p = new User(data);
+        let p = new Movie(data);
         p.save((err) =>{
             if(err){
             return fail(err);
@@ -37,7 +40,7 @@ const createNew = (data) => {
 
 const remove = (id) =>{
     return new Promise((succes,fail) =>{
-        User.deleteOne({_id: id},(err) =>{
+        Movie.deleteOne({_id: id},(err) =>{
             if(err){
                 return fail(err);
             }
@@ -48,7 +51,7 @@ const remove = (id) =>{
 
 const update = (id,data) => {
     return new Promise((succes,fail) =>{
-        User.update({_id:id},data,(err) =>{
+        Movie.update({_id:id},data,(err) =>{
             if(err){
                 return fail(err);
             }
@@ -58,9 +61,9 @@ const update = (id,data) => {
     });
 }
 
-const getByEmail = (email) => {
+const getByid = (id) => {
     return new Promise((succes,fail) => {
-        User.findOne({email:email},(err, data) =>{
+        Movie.findOne({_id:id},(err, data) =>{
             if(err){
                 return fail(err);
             }
@@ -69,10 +72,12 @@ const getByEmail = (email) => {
     })
 }
 
+
+
 module.exports = {
     readAll,
     createNew,
     remove,
     update,
-    getByEmail
+    getByid
 }
